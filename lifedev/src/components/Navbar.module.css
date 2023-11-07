@@ -18,9 +18,10 @@
 .links_list {
     display: flex;
     list-style: none;
+    font-weight: 700;
 }
 
-.links li a {
+.links_list li a {
     padding: .4em .6em;
 }
 

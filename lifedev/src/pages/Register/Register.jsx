@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useState } from 'react'
 
+const Register = () => {
 const [displayName, setDisplayName] = useState('')
 const [emailUsuario, setEmailUsuario] = useState('')
 const [senhaUsuario, setSenhaUsuario] = useState('')
 const [confirmaSenha, setConfirmaSenha] = useState('')
 const [erro, setErro] = useState('')
-
-
-const Register = () => {
   return (
     <div>
       <h1>Cadastro de LifeDevelopers</h1>

@@ -31,13 +31,51 @@ export const userAuthentication = () =>{
         try{
             const { user } = await createUserWithEmailAndPasswor(
                 auth,
-                date.email,
+                data.email,
                 data.password
     
             )
+
+            await updateProfile(user, {
+                displayName: data.displayName
+            })
+
+            setLoading(false)
+
+            return user
+
         }catch(error) {
+            console.log(error.message)
+            console.error(typeof error.message)
+
+            let systemErrorMessage
+
+            if (error.message.includes("Password")) {
+                systemErrorMessage = "A senha precisa conter pelo menos 6 caracteres. "
+
+                
+            }else if (error.message.includes("email-already")){
+                systemErrorMessage = "Esse email já está cadastrado."
+            }else{
+                systemErrorMessage = "Ocorreu um erro, tente novamente mais tarde."
+            }
+
+            setLoading(false)
+            setError(systemErrorMessage)
             
         }
         
     }
+
+    useEffect(() =>{
+        return () => setCancelled(true)
+    }, [])
+
+    return{
+        auth,
+        createUser,
+        error,
+        loading
+    }
+
 }

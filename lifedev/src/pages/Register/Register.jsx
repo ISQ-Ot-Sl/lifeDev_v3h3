@@ -7,7 +7,7 @@ const [displayName, setDisplayName] = useState('')
 const [email, setEmail] = useState('')
 const [senha, setSenha] = useState('')
 const [confirmaSenha, setConfirmaSenha] = useState('')
-const [erro, setError] = useState('')
+const [error, setError] = useState('')
 
 //construtor
 const { createUser, error: authError, loading } = userAuthentication()
@@ -90,7 +90,9 @@ useEffect(() => {
 
         </label>
 
-        <button className ='btn'>Cadastrar</button>
+        {!loading && <button className ='btn'>Cadastrar</button>}
+        {loading && <button className ='btn'>Aguarde...</button>} 
+        {error && <p className="error">{error}</p>}      
         
       </form>
     </div>

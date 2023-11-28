@@ -1,7 +1,7 @@
 import { db} from "../firebase/config";
 import {
     getAuth,
-    createUserWithEmailAndPasswor,
+    createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     updateProfile,
     signOut,
@@ -29,7 +29,7 @@ export const userAuthentication = () =>{
         setError(null)
 
         try{
-            const { user } = await createUserWithEmailAndPasswor(
+            const { user } = await createUserWithEmailAndPassword(
                 auth,
                 data.email,
                 data.password
